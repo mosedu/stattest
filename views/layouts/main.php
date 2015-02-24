@@ -14,6 +14,10 @@ AppAsset::register($this);
     <link rel="apple-touch-icon" sizes="76x76" href="touch-icon-ipad.png">
     <link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png">
     <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png">
+
+<link rel="apple-touch-startup-image" href="/startup.png"> - startup image, replace last screen executed
+<meta name="apple-mobile-web-app-capable" content="yes"> - hide Safari panels
+<meta name="apple-mobile-web-app-status-bar-style" content="black"> - small size status bar
  */
 ?>
 <?php $this->beginPage() ?>
@@ -30,6 +34,10 @@ AppAsset::register($this);
     <link rel="apple-touch-icon" sizes="76x76" href="/images/i76.png">
     <link rel="apple-touch-icon" sizes="120x120" href="/images/i120.png">
     <link rel="apple-touch-icon" sizes="152x152" href="/images/i152.png">
+
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 </head>
 <body>
