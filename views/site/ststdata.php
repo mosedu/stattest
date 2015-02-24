@@ -8,15 +8,15 @@ use yii\web\View;
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model app\models\ContactForm */
 
-$this->title = 'Statistic data';
+$this->title = 'Основная статстика';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-contact">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <div class="alert alert-success">
+    <!-- div class="alert alert-success">
         Ok statistic data
-    </div>
+    </div -->
 
     <div class="row">
         <div class="col-lg-5 chartcont">
@@ -222,7 +222,7 @@ if( false ) {
             .attr("y", 6)
             .attr("dy", ".71em")
             .style("text-anchor", "end")
-            .text("Population");
+            .text("Количество");
 
         var state = svg.selectAll(".state")
             .data(data)
