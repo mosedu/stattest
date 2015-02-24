@@ -16,10 +16,10 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['logout', 'stat', ],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout', 'stat', ],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -93,4 +93,11 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionStat()
+    {
+        return $this->render('ststdata', []);
+    }
+
 }
+
