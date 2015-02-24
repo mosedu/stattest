@@ -149,6 +149,21 @@ if( false ) {
         font: 10px sans-serif;
     }
 
+    .smalldot {
+/*        fill: steelblue;*/
+        stroke-width: 2px;
+        stroke-linecap: round;
+        stroke: #000099;
+        fill: #ffffff;
+    }
+
+    .smalldot1 {
+        stroke-width: 2px;
+        stroke-linecap: round;
+        stroke: #ff0000;
+        fill: #ffffff;
+    }
+
     .axis path,
     .axis line {
         fill: none;
@@ -259,6 +274,75 @@ if( false ) {
             .text(function(d) { return d; });
 
     });
+/* **************************** new plot ************************************************** */
+    var aData = [], x, xTicks = 4, yTicks = 20;
+    for(var i = 0; i<=360; i += 10) {
+        x = i * Math.PI / 180;
+        aData.push({x: i, y: Math.sin(x), z: Math.cos(x) });
+    }
+
+    var svg1 = d3.select(".chartcont").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var xscale = d3.scale.linear()
+        .range([0, width]);
+    xscale.ticks(xTicks);
+
+    var yscale = d3.scale.linear()
+        .range([height, 0]);
+
+    xscale.domain([d3.min(aData, function(d) { return d.x; }), d3.max(aData, function(d) { return d.x; })]);
+    yscale.domain([d3.min(aData, function(d) { return d.y; }), d3.max(aData, function(d) { return d.y; })]);
+
+    svg1.selectAll(".smalldot")
+        .data(aData)
+        .enter().append("circle")
+        .attr("class", "smalldot")
+        .attr("r", function(d) { return 5; })
+        .attr("cx", function(d) { return xscale(d.x); })
+        .attr("cy", function(d) { return height - yscale(d.y); });
+//        .attr("height", function(d) { return height - y(d.value); })
+//        .attr("width", x.rangeBand());
+
+    svg1.selectAll(".smalldot1")
+        .data(aData)
+        .enter().append("circle")
+        .attr("class", "smalldot1")
+        .attr("r", function(d) { return 5; })
+        .attr("cx", function(d) { return xscale(d.x); })
+        .attr("cy", function(d) { return height * 0.75 - yscale(d.z) * 0.5; });
+//        .attr("cy", function(d) { return height / 2 - yscale(d.z) * 0.5; });
+    //        .attr("height", function(d) { return height - y(d.value); })
+    //        .attr("width", x.rangeBand());
+
+    var xAx = d3.svg.axis()
+        .scale(xscale)
+        .tickFormat(xscale.tickFormat(xTicks, ".1f"))
+        .orient("bottom");
+
+    var yAx = d3.svg.axis()
+        .scale(yscale)
+        .orient("left")
+        .tickFormat(yscale.tickFormat(yTicks, ".2f"));
+//    .tickFormat(count, [format])
+
+    svg1.append("g")
+        .attr("class", "y axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAx);
+
+    svg1.append("g")
+        .attr("class", "y axis")
+        .call(yAx)
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Sin(x)");
 </script>
 
 <?php
