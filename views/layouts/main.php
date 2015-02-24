@@ -9,6 +9,12 @@ use app\assets\AppAsset;
 /* @var $content string */
 
 AppAsset::register($this);
+/*
+    <link rel="apple-touch-icon" href="touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png">
+ */
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -19,6 +25,12 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+
+    <link rel="apple-touch-icon" href="/images/i60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/i76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/i120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/i152.png">
+
 </head>
 <body>
 
