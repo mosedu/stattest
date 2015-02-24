@@ -96,6 +96,7 @@ class SiteController extends Controller
 
     public function actionStat()
     {
+        $this->layout = "empty";
         return $this->render('ststdata', []);
     }
 
