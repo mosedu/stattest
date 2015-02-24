@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
+use yii\web\View;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -19,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row">
         <div class="col-lg-5 chartcont">
-            <svg class="chart"></svg>
+            <!-- svg class="chart"></svg -->
         </div>
     </div>
 
@@ -258,5 +259,12 @@ if( false ) {
             .text(function(d) { return d; });
 
     });
-
 </script>
+
+<?php
+
+$this->registerJs(
+    '$(".alert").on("click", function(event){ event.preventDefault(); $(this).hide();});',
+    View::POS_READY,
+    'alertclick'
+);
